@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class PointNClickManager : MonoBehaviour
 {
     public TextMeshProUGUI tmproLocation;
+    public TextMeshProUGUI speaker;
+    public TextMeshProUGUI discussionField;
+
     public GameObject pnClickPanel;
     public GameObject discussionPanel;
 
@@ -28,38 +32,57 @@ public class PointNClickManager : MonoBehaviour
 
     public CLICKERSTATE state = CLICKERSTATE.IDLE;
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1) && (state != CLICKERSTATE.TALKING))
+            GoIdle();
+    }
+
     public void GoIdle()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        tmproLocation.text = FindObjectOfType<SceneHandlerClass>().sceneLocationName;
         state = CLICKERSTATE.IDLE;
     }
 
     public void ClickObserve()
     {
+        tmproLocation.text = "Observe ";
+        EventSystem.current.SetSelectedGameObject(null);
         state = CLICKERSTATE.OBSERVE;
     }
 
     public void ClickUse()
     {
+        tmproLocation.text = "Use ";
+        EventSystem.current.SetSelectedGameObject(null);
         state = CLICKERSTATE.USE;
     }
 
     public void ClickMenu()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         state = CLICKERSTATE.MENU;
     }
 
     public void ClickMove()
     {
+        tmproLocation.text = "Move ";
+        EventSystem.current.SetSelectedGameObject(null);
         state = CLICKERSTATE.MOVE;
     }
 
     public void ClickTalk()
     {
+        tmproLocation.text = "Talk with ";
+        EventSystem.current.SetSelectedGameObject(null);
         state = CLICKERSTATE.TALK;
     }
 
     public void ClickPickUp()
     {
+        tmproLocation.text = "Pick up ";
+        EventSystem.current.SetSelectedGameObject(null);
         state = CLICKERSTATE.PICKUP;
     }
 
@@ -102,8 +125,7 @@ public class PointNClickManager : MonoBehaviour
                 isTalking = false;
                 StopCoroutine("Discuss");
                 TextMeshProUGUI tmpDiscuss = discussionPanel.GetComponentInChildren<TextMeshProUGUI>();
-                tmpDiscuss.text = discussion[0];
-                Debug.Log("WasTalking");
+                discussionField.text = discussion[0].Split(':')[1].TrimStart(' ');
             }
 
             else
@@ -117,14 +139,15 @@ public class PointNClickManager : MonoBehaviour
 
     private IEnumerator Discuss(string toDiscuss)
     {
-        TextMeshProUGUI tmpDiscuss = discussionPanel.GetComponentInChildren<TextMeshProUGUI>();
-        tmpDiscuss.text = "";
+        discussionField.text = "";
         isTalking = true;
-        foreach (char c in toDiscuss)
+        speaker.text = toDiscuss.Split(':')[0].TrimEnd(' ');
+
+        foreach (char c in toDiscuss.Split(':')[1].TrimStart(' '))
         {
             if (!isTalking)
                 break;
-            tmpDiscuss.text += c;
+            discussionField.text += c;
             yield return new WaitForSeconds(0.02f);
         }
         isTalking = false;

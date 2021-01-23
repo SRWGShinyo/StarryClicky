@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager activeGC;
+    public Texture2D cursorText;
 
     private void Awake()
     {
@@ -18,6 +19,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        Cursor.SetCursor(cursorText, Vector2.zero, CursorMode.Auto);
     }
 
 

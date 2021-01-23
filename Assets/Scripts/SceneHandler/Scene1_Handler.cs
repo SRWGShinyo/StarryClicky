@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scene1_Handler : MonoBehaviour
+public class Scene1_Handler : SceneHandlerClass
 {
     public List<string> intro;
 
