@@ -31,6 +31,7 @@ public class PointNClickManager : MonoBehaviour
     }
 
     public CLICKERSTATE state = CLICKERSTATE.IDLE;
+    private CLICKERSTATE savedState = CLICKERSTATE.IDLE;
 
     private void Update()
     {
@@ -88,6 +89,7 @@ public class PointNClickManager : MonoBehaviour
 
     public void GetIntoTalking(List<string> papot)
     {
+        savedState = state;
         state = CLICKERSTATE.TALKING;
         discussion = new List<string>(papot);
         string stringToPlay = discussion[0];
@@ -99,7 +101,7 @@ public class PointNClickManager : MonoBehaviour
 
     public void GetOutoTalking()
     {
-        state = CLICKERSTATE.IDLE;
+        state = savedState;
         discussionPanel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.5f);
         pnClickPanel.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
     }

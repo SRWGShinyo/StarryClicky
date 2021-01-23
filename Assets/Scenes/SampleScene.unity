@@ -5410,12 +5410,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneLocationName: My little Galaxy
   intro:
-  - 'Narrator : Stary was a little star, all alone in its galaxy'
+  - 'Narrator : Starry was a little star, all alone in its galaxy'
   - 'Narrator : And it had a very big problem'
-  - 'Stary : I don''t shine enough ! I want more light !'
-  - 'Stary : I can''t light all the space in my galaxy...'
-  - 'Stary : That''s decided ! I''m going to explore the universe !'
-  - 'Stary : I will find a way to shine brighter !'
+  - 'Starry : I don''t shine enough ! I want more light !'
+  - 'Starry : I can''t light all the space in my galaxy...'
+  - 'Starry : That''s decided ! I''m going to explore the universe !'
+  - 'Starry : I will find a way to shine brighter !'
 --- !u!1 &462334276
 GameObject:
   m_ObjectHideFlags: 0
@@ -6256,6 +6256,7 @@ GameObject:
   - component: {fileID: 675686961}
   - component: {fileID: 675686960}
   - component: {fileID: 675686964}
+  - component: {fileID: 675686965}
   m_Layer: 5
   m_Name: PNClickCanvas
   m_TagString: Untagged
@@ -6364,6 +6365,19 @@ MonoBehaviour:
   discussionPanel: {fileID: 1521813352}
   discussion: []
   state: 0
+--- !u!114 &675686965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675686959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908444d0021f0e445981492fd9ef0120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationText: {fileID: 586419347}
 --- !u!1 &680587779
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,3 +9445,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.74
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8296172667781744159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172667781744156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe280cf451dd164586869bf6aedfc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInteractor: Starry
