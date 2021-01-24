@@ -7,11 +7,20 @@ public class GameManager : MonoBehaviour
     public static GameManager activeGC;
     public Texture2D cursorText;
 
+    public bool hasTalkedToSun;
+
+    public Dictionary<string, bool> taken = new Dictionary<string, bool>();
+    public List<InventObject> inventory = new List<InventObject>();
+
+    List<string> pickItems = new List<string>(){ "Butterfly Net" };
+
     private void Awake()
     {
         if (!activeGC)
         {
             activeGC = this;
+            foreach (string s in pickItems)
+                taken.Add(s, false);
             DontDestroyOnLoad(gameObject);
         }
 
@@ -26,6 +35,12 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(cursorText, Vector2.zero, CursorMode.Auto);
     }
 
+    public void AddToInventory(InventObject inObj)
+    {
+        inventory.Add(inObj);
+        taken[inObj.objectName] = true;
+        FindObjectOfType<PointNClickManager>().UpdateInventory();
+    }
 
     public bool hasIntroPlayed = false;
 }

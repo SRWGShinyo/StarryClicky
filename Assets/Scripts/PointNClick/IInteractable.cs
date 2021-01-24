@@ -5,11 +5,12 @@ using UnityEngine;
 public abstract class IInteractable : MonoBehaviour
 {
     public string nameInteractor;
-    Outliner outline;
+    public Outliner outline;
 
     private void Start()
     {
-        outline = GetComponent<Outliner>();
+        if (!outline)
+            outline = GetComponent<Outliner>();
         if (!outline)
             outline = GetComponentInChildren<Outliner>();
     }

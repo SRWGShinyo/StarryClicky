@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using System;
 
 public class PointNClickManager : MonoBehaviour
 {
@@ -15,8 +17,12 @@ public class PointNClickManager : MonoBehaviour
     public GameObject discussionPanel;
 
     public List<string> discussion;
+    public List<GameObject> inventoryTons;
 
     private bool isTalking;
+
+    public string object1;
+    public string object2;
 
     public enum CLICKERSTATE
     {
@@ -32,6 +38,16 @@ public class PointNClickManager : MonoBehaviour
 
     public CLICKERSTATE state = CLICKERSTATE.IDLE;
     private CLICKERSTATE savedState = CLICKERSTATE.IDLE;
+
+    string toPlay = "";
+
+    public void UpdateInventory()
+    {
+        for (int i = 0; i < GameManager.activeGC.inventory.Count; i++)
+        {
+            inventoryTons[i].GetComponent<Image>().sprite = GameManager.activeGC.inventory[i].image;
+        }
+    }
 
     private void Update()
     {
@@ -89,11 +105,12 @@ public class PointNClickManager : MonoBehaviour
 
     public void GetIntoTalking(List<string> papot)
     {
+        toPlay = "";
         savedState = state;
         state = CLICKERSTATE.TALKING;
         discussion = new List<string>(papot);
-        string stringToPlay = discussion[0];
-        StartCoroutine(Discuss(stringToPlay));
+        toPlay = discussion[0];
+        StartCoroutine(Discuss(toPlay));
 
         pnClickPanel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.5f);
         discussionPanel.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
@@ -124,17 +141,34 @@ public class PointNClickManager : MonoBehaviour
         {
             if (isTalking)
             {
+                if (toPlay == "")
+                    toPlay = discussion[0];
+
                 isTalking = false;
                 StopCoroutine("Discuss");
                 TextMeshProUGUI tmpDiscuss = discussionPanel.GetComponentInChildren<TextMeshProUGUI>();
-                discussionField.text = discussion[0].Split(':')[1].TrimStart(' ');
+                discussionField.text = toPlay.Split(':')[1].TrimStart(' ');
             }
 
             else
             {
                 discussion.RemoveAt(0);
-                string stringToPlay = discussion[0];
-                StartCoroutine(Discuss(stringToPlay));
+                if (discussion.Count == 0)
+                {
+                    StopCoroutine("Discuss");
+                    GetOutoTalking();
+                }
+                try
+                {
+                    toPlay = discussion[0];
+                    StartCoroutine(Discuss(toPlay));
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    StopCoroutine("Discuss");
+                    GetOutoTalking();
+                }
+
             }
         }
     }
