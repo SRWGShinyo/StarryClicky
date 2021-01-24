@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 944c6eb53d03ecc4982155d9e8bdb995, type: 3}
-  m_Name: ButterflyNet
+  m_Name: Butterfly
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 65dec49a33798a24c902411061a91f03, type: 3}
-  objectName: Butterfly Net
+  image: {fileID: 21300000, guid: 11e51206ad6b63b4182ec25056a264f5, type: 3}
+  objectName: Butterfly

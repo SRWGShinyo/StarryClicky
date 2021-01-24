@@ -18,7 +18,7 @@ public class TelescopeInteract : IInteractable
             new List<string>() {
                 "Narrator : Here, standing, was a telescope.",
                 "Narrator : It seemed to be pointed at something.",
-                "Narrator : But starry could use it...it would need an other pair of eyes."
+                "Narrator : But starry could not use it...it would need an other pair of eyes."
             });
     }
 

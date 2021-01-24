@@ -7,12 +7,14 @@ public class GameManager : MonoBehaviour
     public static GameManager activeGC;
     public Texture2D cursorText;
 
+    public bool hasTalkedToAstronaut;
     public bool hasTalkedToSun;
+    public bool hasTalkedToBluey;
 
     public Dictionary<string, bool> taken = new Dictionary<string, bool>();
     public List<InventObject> inventory = new List<InventObject>();
 
-    List<string> pickItems = new List<string>(){ "Butterfly Net" };
+    List<string> pickItems = new List<string>(){ "Butterfly Net", "Butterfly" };
 
     private void Awake()
     {
