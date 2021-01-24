@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/Telescop.unity
+    guid: 6d7f2d63d59690b4e8783bf7db4a3e84
+  - enabled: 1
+    path: Assets/Scenes/Chest.unity
+    guid: f91df10469435c64d83a980c6f87f601
+  - enabled: 1
+    path: Assets/Scenes/Sun.unity
+    guid: a6740fc12cf26c9409f7a6792a648790
+  - enabled: 1
+    path: Assets/Scenes/Astronaut.unity
+    guid: 943442f37c579574f8f907ef1c0c4746
   m_configObjects: {}

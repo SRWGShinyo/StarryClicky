@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AstronautINteracct : IInteractable
+public class ChestInteracc : IInteractable
 {
+    public InventObject blueEssence;
 
     public override void Move()
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator :  What do you hope to achieve with this ?"
+                "Narrator : The chest is tightly locked and Starry couldn't move in it."
             });
     }
 
@@ -17,41 +18,39 @@ public class AstronautINteracct : IInteractable
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator : An astronaut was standing here, floating.",
-                "Narrator : He seemed flustered."
+                "Narrator : A tightly locked chest was floating here, in space.",
+                "Narrator : In spite of the obvious key lock, it seemed like Starry needed a code to open it."
             });
     }
 
     public override void PickUp()
     {
-        FindObjectOfType<PointNClickManager>().GetIntoTalking(
-            new List<string>() {
-                "Narrator : .... No."
-            });
-    }
-
-    public override void TalkTo()
-    {
-        if (!GameManager.activeGC.hasTalkedToAstronaut)
+        if (GameManager.activeGC.hasTheCode)
         {
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
-                "Starry : Hello ! Are you lost ?",
-                "Astro : I'm not...I was looking at the galaxies with my telescope...",
-                "Astro : But I'm so hungry...I need to eat..."
+                    "Starry : Let's try the code...it opened !",
+                    "Starry : Is that a blue star essence ?"
                 });
+            GameManager.activeGC.AddToInventory(blueEssence);
+            gameObject.SetActive(false);
         }
 
         else
         {
-
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
-                "Astro : So hungry...",
-                "Starry : I should find him something to eat."
+                    "Starry : Without the code, I won't open it...",
                 });
         }
+    }
 
+    public override void TalkTo()
+    {
+        FindObjectOfType<PointNClickManager>().GetIntoTalking(
+            new List<string>() {
+                    "Narrator : Surprisingly enough, the planks won't talk."
+            });
     }
 
     public override void Use()

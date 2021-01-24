@@ -9,6 +9,8 @@ using System;
 
 public class PointNClickManager : MonoBehaviour
 {
+    public static PointNClickManager pnClick;
+
     public TextMeshProUGUI tmproLocation;
     public TextMeshProUGUI speaker;
     public TextMeshProUGUI discussionField;
@@ -22,7 +24,20 @@ public class PointNClickManager : MonoBehaviour
     private bool isTalking;
 
     public string object1;
-    public string object2;
+
+    private void Awake()
+    {
+        if (!pnClick)
+        {
+            pnClick = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public enum CLICKERSTATE
     {
@@ -49,6 +64,10 @@ public class PointNClickManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        tmproLocation.text = FindObjectOfType<SceneHandlerClass>().sceneLocationName;
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(1) && (state != CLICKERSTATE.TALKING))
@@ -58,6 +77,7 @@ public class PointNClickManager : MonoBehaviour
     public void GoIdle()
     {
         EventSystem.current.SetSelectedGameObject(null);
+        ResetUseState();
         tmproLocation.text = FindObjectOfType<SceneHandlerClass>().sceneLocationName;
         state = CLICKERSTATE.IDLE;
     }
@@ -101,6 +121,17 @@ public class PointNClickManager : MonoBehaviour
         tmproLocation.text = "Pick up ";
         EventSystem.current.SetSelectedGameObject(null);
         state = CLICKERSTATE.PICKUP;
+    }
+
+    public void ResetUseState()
+    {
+        object1 = "";
+    }
+
+    public void SelectItemToUse(string itemname)
+    {
+        object1 = itemname;
+        tmproLocation.text += itemname + " with ";
     }
 
     public void GetIntoTalking(List<string> papot)

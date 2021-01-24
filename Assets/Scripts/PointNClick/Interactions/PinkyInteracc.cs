@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueInteract : IInteractable
+public class PinkyInteracc : IInteractable
 {
     public override void Move()
     {
@@ -16,7 +16,7 @@ public class BlueInteract : IInteractable
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator : A little, non-shining blue star was standing right here."
+                "Narrator : A purple, non-shining star, was standing here."
             });
     }
 
@@ -24,45 +24,44 @@ public class BlueInteract : IInteractable
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator : Basically...this would be kidnapping. Don't do that."
+                "Narrator : We won't do that."
             });
     }
 
     public override void TalkTo()
     {
-        if (!GameManager.activeGC.hasTalkedToBluey)
+        if (!GameManager.activeGC.hasTalkedToPinky)
         {
-            GameManager.activeGC.hasTalkedToBluey = true;
+            GameManager.activeGC.hasTalkedToPinky = true;
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
-                "Starry : Hello ! You seem sad...",
-                "Bluey : Hello...I am Bluey...I lost my essence...",
-                "Starry : That's awful ! So you don't shine anymore ?",
-                "Bluey : I don't...Could you find my essence for me ?....",
-                "Starry : I will do my best !"
+                "Starry : Hello !",
+                "Pinky : Oh, hello... I never saw you here !",
+                "Starry : Yeah, I'm travelling !",
+                "Pinky : That sure seems great...",
+                "Starry : is something wrong ?",
+                "Pinky : That butterfly stole my essence ! And I can't capture it !",
+                "Starry : Oh...",
+                "Starry : I'll try to do something about that !"
                 });
         }
 
         else if (false)
         {
-
-            FindObjectOfType<PointNClickManager>().GetIntoTalking(
+           FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
-                "Starry : I have his essence with me...should I give it to him ?...",
-                "Starry : It shines a lot...",
+                "Starry : I have the essence...but should I give it up ?... ",
                 });
-
         }
 
         else
         {
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
-                "Starry : Hi there ! I'm still searching for your essence ! ",
-                "Bluey : Thanks...",
-                });
+                "Starry : I'll find your essence !",
+                "Pinky : Thank you for your help, that butterfly annoys me.",
+             });
         }
-
     }
 
     public override void Use()
@@ -72,5 +71,4 @@ public class BlueInteract : IInteractable
                     "Narrator : Nothing to use here."
             });
     }
-
 }

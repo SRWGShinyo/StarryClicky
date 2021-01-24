@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool hasTalkedToAstronaut;
     public bool hasTalkedToSun;
     public bool hasTalkedToBluey;
+    public bool hasTalkedToPinky;
+    public bool hasTheCode;
 
     public Dictionary<string, bool> taken = new Dictionary<string, bool>();
     public List<InventObject> inventory = new List<InventObject>();
@@ -37,9 +39,12 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(cursorText, Vector2.zero, CursorMode.Auto);
     }
 
-    public void AddToInventory(InventObject inObj)
+    public void AddToInventory(InventObject inObj, int where = -1)
     {
-        inventory.Add(inObj);
+        if (where != -1)
+            inventory[where] = inObj;
+        else
+            inventory.Add(inObj);
         taken[inObj.objectName] = true;
         FindObjectOfType<PointNClickManager>().UpdateInventory();
     }

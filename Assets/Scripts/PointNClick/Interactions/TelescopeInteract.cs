@@ -40,7 +40,10 @@ public class TelescopeInteract : IInteractable
 
     public override void Use()
     {
-        throw new System.NotImplementedException();
+        FindObjectOfType<PointNClickManager>().GetIntoTalking(
+            new List<string>() {
+                    "Narrator : Nothing to use here."
+            });
     }
 
 }
