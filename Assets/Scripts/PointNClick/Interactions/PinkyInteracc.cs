@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PinkyInteracc : IInteractable
 {
+    public Material lightupPurple;
+
+    private void Start()
+    {
+        if (GameManager.activeGC.hasGivenPinkEssence)
+            Destroy(gameObject);
+    }
+
     public override void Move()
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
@@ -46,7 +54,7 @@ public class PinkyInteracc : IInteractable
                 });
         }
 
-        else if (false)
+        else if (GameManager.activeGC.inventory.FindLast(x => x.objectName == "Purple Essence"))
         {
            FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
@@ -66,6 +74,34 @@ public class PinkyInteracc : IInteractable
 
     public override void Use()
     {
+        if (PointNClickManager.pnClick.object1 == "Butterfly")
+        {
+            FindObjectOfType<PointNClickManager>().GetIntoTalking(
+                new List<string>() {
+                "Starry : I'll got the butterfly !",
+                "Pinky : Great ! Well done ! But...",
+                "Starry : Yeah, I need to find a way to retrieve your essence now...",
+                "Pinky : Yap"
+             });
+        }
+
+        else if (PointNClickManager.pnClick.object1 == "Purple Essence")
+        {
+            FindObjectOfType<PointNClickManager>().GetIntoTalking(
+                new List<string>() {
+                "Starry : Here, your essence !",
+                "Pinky : Oooh thanks you so much ! You're the best !",
+                "Starry : Well, I'm happy I helped !",
+                "Pinky : Y'know...I feel like we could become good friend. Mind if I join you in your galaxy ?",
+                "Starry : Oh not at all ! Let's meet there !"
+                });
+
+            GameManager.activeGC.hasGivenPinkEssence = true;
+            GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Purple Essence"));
+            PointNClickManager.pnClick.UpdateInventory();
+            gameObject.SetActive(false);
+        }
+
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
                     "Narrator : Nothing to use here."

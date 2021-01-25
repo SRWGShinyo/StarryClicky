@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, bool> taken = new Dictionary<string, bool>();
     public List<InventObject> inventory = new List<InventObject>();
 
-    List<string> pickItems = new List<string>(){ "Butterfly Net", "Butterfly" };
+    public bool hasGivenPinkEssence = false;
+
+    List<string> pickItems = new List<string>(){ "Butterfly Net", "Butterfly", "Purple Essence" };
 
     private void Awake()
     {

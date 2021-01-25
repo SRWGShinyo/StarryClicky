@@ -5266,6 +5266,7 @@ MonoBehaviour:
   hasTalkedToPinky: 0
   hasTheCode: 0
   inventory: []
+  hasGivenPinkEssence: 0
   hasIntroPlayed: 0
 --- !u!1 &1827222101
 GameObject:
@@ -10751,7 +10752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInteractor: Pink Butterfly
-  outline: {fileID: 0}
+  outline: {fileID: 2577023927398507538}
   papillion: {fileID: 11400000, guid: f0edf57a291080e47813aab2af825558, type: 2}
 --- !u!1 &2613077719170912245
 GameObject:
@@ -11636,6 +11637,7 @@ GameObject:
   - component: {fileID: 5426173161204518557}
   - component: {fileID: 5426173161204518556}
   - component: {fileID: 5426173161204518558}
+  - component: {fileID: 5426173161204518559}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -11689,6 +11691,21 @@ MonoBehaviour:
   nameInteractor: Chest
   outline: {fileID: 0}
   blueEssence: {fileID: 0}
+--- !u!114 &5426173161204518559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426173161204518555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a3f283ddb4d474482320c9ba42b88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 0.2
+  _distance: 0.015
+  _delayBetweenShakes: 0.044
 --- !u!33 &5525971472967629897
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12235,7 +12252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInteractor: Pinky
-  outline: {fileID: 0}
+  outline: {fileID: 3800358970177361190}
+  lightupPurple: {fileID: 2100000, guid: 7a19d862d9fc38740835744bf8e528f5, type: 2}
 --- !u!114 &7255823426413981882
 MonoBehaviour:
   m_ObjectHideFlags: 0
