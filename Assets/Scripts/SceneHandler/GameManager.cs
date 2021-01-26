@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public bool hasGivenBlueEssence = false;
     public bool hasGivenRedEssenece = false;
 
-    List<string> pickItems = new List<string>(){ "Butterfly Net", "Butterfly", "Purple Essence", "Fish", "Rod", "Green Essence", "Blue Essence" };
+    List<string> pickItems = new List<string>(){ "Butterfly Net", "Butterfly", "Purple Essence", "Fish", "Rod", "Green Essence", "Blue Essence", "Red Essence Part 1", "Red Essence Part 2", "Red Essence Part 3", "Red Essence" };
 
     public List<ArrowScripts.Destinations> toGoToGo = new List<ArrowScripts.Destinations>()
     {

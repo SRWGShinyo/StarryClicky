@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ArrowScripts : MonoBehaviour
 {
-    public int indexSceneToLoad;
+    public 
+        int indexSceneToLoad;
 
     public enum Destinations
     {
