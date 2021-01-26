@@ -12,7 +12,8 @@ public class ArrowScripts : MonoBehaviour
     {
         LEFT,
         UP,
-        RIGHT
+        RIGHT,
+        DOWN
     }
     public Destinations dest;
     
@@ -26,6 +27,21 @@ public class ArrowScripts : MonoBehaviour
 
     public void MoveLabyrinth()
     {
+        if (dest == Destinations.DOWN)
+        {
+            GameManager.activeGC.toGoToGo = new List<Destinations>()
+            {
+                Destinations.UP,
+                Destinations.LEFT,
+                Destinations.UP,
+                Destinations.RIGHT
+            };
+
+            PointNClickManager.pnClick.savedState = PointNClickManager.CLICKERSTATE.IDLE;
+            PointNClickManager.pnClick.state = PointNClickManager.CLICKERSTATE.IDLE;
+            SceneManager.LoadScene(7);
+        }
+        
         if (dest != GameManager.activeGC.toGoToGo[0])
         {
             GameManager.activeGC.toGoToGo = new List<Destinations>()

@@ -5601,6 +5601,7 @@ MonoBehaviour:
   hasTalekdToGreeny: 0
   hasGivenTheEssencesToSun: 0
   hasTheCode: 0
+  hasSeenTheEnd: 0
   inventory: []
   hasGivenPinkEssence: 0
   hasGivenGreenEssence: 0
@@ -6133,7 +6134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexSceneToLoad: 7
-  dest: 0
+  dest: 3
 --- !u!114 &4682301747603492236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6226,7 +6227,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4682301747603492235}
-        m_MethodName: Move
+        m_MethodName: MoveLabyrinth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
