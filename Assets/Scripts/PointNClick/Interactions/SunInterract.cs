@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SunInterract : IInteractable
 {
+    public InventObject redEssence;
+    public InventObject greenEssence;
+    public InventObject blueEssence;
+    public InventObject pinkEssence;
+
     public override void Move()
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
@@ -66,12 +71,18 @@ public class SunInterract : IInteractable
             });
         }
 
-        else if (false)
+        else if (GameManager.activeGC.inventory.Contains(pinkEssence) && GameManager.activeGC.inventory.Contains(blueEssence)
+            && GameManager.activeGC.inventory.Contains(greenEssence) && GameManager.activeGC.inventory.Contains(redEssence))
         {
+            GameManager.activeGC.hasGivenTheEssencesToSun = true;
+            GameManager.activeGC.inventory.Clear();
+            PointNClickManager.pnClick.UpdateInventory();
+
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator : That wouldn't fit in Starry's inventory.",
-                "Narrator : Wherever that was."
+                "Starry : I've got all the essences ! You can take them !",
+                "Sun : Perfect. Thank you. I'll make you bright. Brighter than you ever were.",
+                "Starry : Yaaay !!"
             });
         }
 

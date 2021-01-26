@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public bool hasGivenTheEssencesToSun;
     public bool hasTheCode;
 
+    public bool hasSeenTheEnd;
+
     public Dictionary<string, bool> taken = new Dictionary<string, bool>();
     public List<InventObject> inventory = new List<InventObject>();
 
