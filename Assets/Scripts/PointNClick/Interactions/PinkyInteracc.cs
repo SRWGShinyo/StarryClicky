@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PinkyInteracc : IInteractable
 {
+    public MeshRenderer render;
+
     public Material lightupPurple;
 
     private void Start()
@@ -83,10 +85,12 @@ public class PinkyInteracc : IInteractable
                 "Starry : Yeah, I need to find a way to retrieve your essence now...",
                 "Pinky : Yap"
              });
+            return;
         }
 
         else if (PointNClickManager.pnClick.object1 == "Purple Essence")
         {
+            render.material = lightupPurple;
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
                 "Starry : Here, your essence !",
@@ -100,6 +104,7 @@ public class PinkyInteracc : IInteractable
             GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Purple Essence"));
             PointNClickManager.pnClick.UpdateInventory();
             gameObject.SetActive(false);
+            return;
         }
 
         FindObjectOfType<PointNClickManager>().GetIntoTalking(

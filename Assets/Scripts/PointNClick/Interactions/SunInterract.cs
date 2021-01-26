@@ -58,7 +58,7 @@ public class SunInterract : IInteractable
                 "Starry : You shine a lot ! How do you do it ?",
                 "Sun : I try to be the best star I can.",
                 "Starry : The best star...",
-                "Sun : Bring to me five star essences. If you do, I'll help you shine brighter.",
+                "Sun : Bring to me four star essences. If you do, I'll help you shine brighter.",
                 "Starry : Five star essences ? How will I recognize them ?",
                 "Sun : They will shine a lot, there are what gives a star its light.",
                 "Starry : But how will I find them ?",
@@ -75,13 +75,14 @@ public class SunInterract : IInteractable
             });
         }
 
-        else if (false)
+        else if (GameManager.activeGC.hasGivenGreenEssence || GameManager.activeGC.hasGivenPinkEssence 
+                || GameManager.activeGC.hasGivenBlueEssence || GameManager.activeGC.hasGivenRedEssenece)
         {
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
                 "Sun : Do you have the essences yet ?",
                 "Starry : Yeah...I'm searching.",
-                "Starry : I already gave up one of the essence...",
+                "Starry : I already gave up one of the essences...",
                 "Starry : I hope it won't be a problem...",
             });
         }
@@ -92,13 +93,16 @@ public class SunInterract : IInteractable
             new List<string>() {
                 "Sun : Do you have the essences yet ?",
                 "Starry : I'm searching for them !",
-                "Sun : Fine. I need five."
+                "Sun : Fine. I need four."
             });
         }
     }
 
     public override void Use()
     {
-        throw new System.NotImplementedException();
+        FindObjectOfType<PointNClickManager>().GetIntoTalking(
+        new List<string>() {
+                "Narrator : Nothing to use here."
+        });
     }
 }

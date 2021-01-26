@@ -11,14 +11,26 @@ public class GameManager : MonoBehaviour
     public bool hasTalkedToSun;
     public bool hasTalkedToBluey;
     public bool hasTalkedToPinky;
+    public bool hasTalekdToGreeny;
     public bool hasTheCode;
 
     public Dictionary<string, bool> taken = new Dictionary<string, bool>();
     public List<InventObject> inventory = new List<InventObject>();
 
     public bool hasGivenPinkEssence = false;
+    public bool hasGivenGreenEssence = false;
+    public bool hasGivenBlueEssence = false;
+    public bool hasGivenRedEssenece = false;
 
-    List<string> pickItems = new List<string>(){ "Butterfly Net", "Butterfly", "Purple Essence" };
+    List<string> pickItems = new List<string>(){ "Butterfly Net", "Butterfly", "Purple Essence", "Fish", "Rod", "Green Essence", "Blue Essence" };
+
+    public List<ArrowScripts.Destinations> toGoToGo = new List<ArrowScripts.Destinations>()
+    {
+        ArrowScripts.Destinations.UP,
+        ArrowScripts.Destinations.LEFT,
+        ArrowScripts.Destinations.UP,
+        ArrowScripts.Destinations.RIGHT
+    };
 
     private void Awake()
     {

@@ -30,7 +30,7 @@ public class ChestInteracc : IInteractable
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
                     "Starry : Let's try the code...it opened !",
-                    "Starry : Is that a blue star essence ?"
+                    "Starry : Is that a blue star essence ? Great !"
                 });
             GameManager.activeGC.AddToInventory(blueEssence);
             gameObject.SetActive(false);

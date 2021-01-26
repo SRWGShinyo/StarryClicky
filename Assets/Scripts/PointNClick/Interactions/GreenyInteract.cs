@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueInteract : IInteractable
+public class GreenyInteract : IInteractable
 {
     public MeshRenderer render;
-    public Material blueOn;
+    public Material greenOn;
+
+    private void Start()
+    {
+        if (GameManager.activeGC.hasGivenGreenEssence)
+            Destroy(gameObject);
+    }
 
     public override void Move()
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator : Move is only to move...not to use on friendly stars."
+                    "Narrator : Wouldn't work."
             });
     }
 
@@ -19,7 +25,7 @@ public class BlueInteract : IInteractable
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator : A little, non-shining blue star was standing right here."
+                    "Narrator : A green, non shining star was standing here. Rotating."
             });
     }
 
@@ -27,31 +33,33 @@ public class BlueInteract : IInteractable
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
-                "Narrator : Basically...this would be kidnapping. Don't do that."
+                    "Narrator : Starry wanted to shine more, but not to resort to kidnapping."
             });
     }
 
     public override void TalkTo()
     {
-        if (!GameManager.activeGC.hasTalkedToBluey)
+        if (!GameManager.activeGC.hasTalekdToGreeny)
         {
-            GameManager.activeGC.hasTalkedToBluey = true;
+            GameManager.activeGC.hasTalekdToGreeny = true;
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
-                "Starry : Hello ! You seem sad...",
-                "Bluey : Hello...I am Bluey...I lost my essence...",
-                "Starry : That's awful ! So you don't shine anymore ?",
-                "Bluey : I don't...Could you find my essence for me ?....",
-                "Starry : I will do my best !"
+                "Starry : Hello !",
+                "Greeny : Oh Hello there ! Are you lost ?",
+                "Starry : No, I'm an explorer !",
+                "Greeny : An explorer ! You didn't stumble across a green essence during your journeys ?",
+                "Starry : Nope...sorry...",
+                "Greeny : Too bad...",
+                "Starry : If I do, I'll tell you !",
                 });
         }
 
-        else if (false)
+        else if (GameManager.activeGC.inventory.FindLast(x => x.objectName == "Green Essence"))
         {
 
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
-                "Starry : I have his essence with me...should I give it to him ?...",
+                "Starry : I have its essence with me...should I give it to him ?...",
                 "Starry : It shines a lot...",
                 });
 
@@ -62,28 +70,27 @@ public class BlueInteract : IInteractable
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
                 new List<string>() {
                 "Starry : Hi there ! I'm still searching for your essence ! ",
-                "Bluey : Thanks...",
+                "Greeny : I wish I could help you more !",
                 });
         }
-
     }
 
     public override void Use()
     {
-        if (PointNClickManager.pnClick.object1 == "Blue Essence")
+        if (PointNClickManager.pnClick.object1 == "Green Essence")
         {
-            render.material = blueOn;
+            render.material = greenOn;
             FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>() {
                 "Starry : Here, your essence !",
-                "Bluey : Thanks so much...",
-                "Starry : Hey...you really look lonely...want to come into my galaxy ?",
-                "Bluey : Oh...thanks for proposing...Yeah, with pleasure...",
-                "Starry : Then see you there !"
+                "Greeny : You found it ! Thanks !",
+                "Starry : That was no problem !",
+                "Greeny : I like you ! Meet me in your galaxy !",
+                "Starry : Great then, see you !"
             });
 
-            GameManager.activeGC.hasGivenBlueEssence = true;
-            GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Blue Essence"));
+            GameManager.activeGC.hasGivenGreenEssence = true;
+            GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Green Essence"));
             PointNClickManager.pnClick.UpdateInventory();
             gameObject.SetActive(false);
             return;
@@ -94,5 +101,4 @@ public class BlueInteract : IInteractable
                     "Narrator : Nothing to use here."
             });
     }
-
 }

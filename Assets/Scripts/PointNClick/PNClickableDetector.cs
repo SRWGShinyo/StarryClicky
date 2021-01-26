@@ -48,7 +48,8 @@ public class PNClickableDetector : MonoBehaviour
 
     private void DetectMouseOnInteractable()
     {
-        if (FindObjectOfType<PointNClickManager>().state == PointNClickManager.CLICKERSTATE.TALKING)
+        if (FindObjectOfType<PointNClickManager>().state == PointNClickManager.CLICKERSTATE.TALKING ||
+            FindObjectOfType<PointNClickManager>().state == PointNClickManager.CLICKERSTATE.MOVE)
             return;
 
         RaycastHit hit;
