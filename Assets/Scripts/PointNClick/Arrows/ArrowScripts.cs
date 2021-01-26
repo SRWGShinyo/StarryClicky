@@ -18,6 +18,9 @@ public class ArrowScripts : MonoBehaviour
     
     public void Move()
     {
+        PointNClickManager.pnClick.gameObject.GetComponent<PNClickableDetector>().savedLocation = "";
+        PointNClickManager.pnClick.savedState = PointNClickManager.CLICKERSTATE.IDLE;
+        PointNClickManager.pnClick.state = PointNClickManager.CLICKERSTATE.IDLE;
         SceneManager.LoadScene(indexSceneToLoad);
     }
 
@@ -32,8 +35,9 @@ public class ArrowScripts : MonoBehaviour
                 Destinations.UP,
                 Destinations.RIGHT
             };
-
-            SceneManager.LoadScene(2);
+            PointNClickManager.pnClick.savedState = PointNClickManager.CLICKERSTATE.IDLE;
+            PointNClickManager.pnClick.state = PointNClickManager.CLICKERSTATE.IDLE;
+            SceneManager.LoadScene(6);
         }
 
         else
@@ -48,13 +52,16 @@ public class ArrowScripts : MonoBehaviour
                     Destinations.UP,
                     Destinations.RIGHT
                 };
-
-                SceneManager.LoadScene(10);
+                PointNClickManager.pnClick.savedState = PointNClickManager.CLICKERSTATE.IDLE;
+                PointNClickManager.pnClick.state = PointNClickManager.CLICKERSTATE.IDLE;
+                SceneManager.LoadScene(8);
             }
 
             else
             {
-                SceneManager.LoadScene(5);
+                PointNClickManager.pnClick.savedState = PointNClickManager.CLICKERSTATE.IDLE;
+                PointNClickManager.pnClick.state = PointNClickManager.CLICKERSTATE.IDLE;
+                SceneManager.LoadScene(6);
             }
         }
     }

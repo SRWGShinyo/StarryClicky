@@ -103,6 +103,8 @@ public class PinkyInteracc : IInteractable
             GameManager.activeGC.hasGivenPinkEssence = true;
             GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Purple Essence"));
             PointNClickManager.pnClick.UpdateInventory();
+            PointNClickManager.pnClick.Rest();
+
             gameObject.SetActive(false);
             return;
         }

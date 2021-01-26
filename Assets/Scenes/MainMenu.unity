@@ -5671,7 +5671,6 @@ MonoBehaviour:
   hasTalkedToBluey: 0
   hasTalkedToPinky: 0
   hasTalekdToGreeny: 0
-  hasGivenTheEssencesToSun: 0
   hasTheCode: 0
   inventory: []
   hasGivenPinkEssence: 0
@@ -5936,7 +5935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e823094d55da9e448975e49a2bf47c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexSceneToLoad: 2
+  indexSceneToLoad: 1
   dest: 0
 --- !u!1 &2400512590583384307
 GameObject:
@@ -6296,7 +6295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e823094d55da9e448975e49a2bf47c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexSceneToLoad: 7
+  indexSceneToLoad: 6
   dest: 0
 --- !u!1 &2400512592018755462
 GameObject:

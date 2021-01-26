@@ -50,6 +50,8 @@ public class MachineInteracc : IInteractable
                 });
 
             GameManager.activeGC.AddToInventory(purpleEssence, GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Butterfly"));
+            PointNClickManager.pnClick.Rest();
+
         }
 
         else

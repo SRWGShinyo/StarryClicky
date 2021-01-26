@@ -100,6 +100,8 @@ public class RedyInteracc : IInteractable
             GameManager.activeGC.hasGivenRedEssenece = true;
             GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Red Essence"));
             PointNClickManager.pnClick.UpdateInventory();
+            PointNClickManager.pnClick.Rest();
+
             gameObject.SetActive(false);
             return;
         }

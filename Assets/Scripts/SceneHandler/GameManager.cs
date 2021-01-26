@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager activeGC;
     public Texture2D cursorText;
 
+    public bool hasGivenAstroTheFish;
     public bool hasTalkedToAstronaut;
     public bool hasTalkedToSun;
     public bool hasTalkedToBluey;
     public bool hasTalkedToPinky;
     public bool hasTalekdToGreeny;
+
+    public bool hasGivenTheEssencesToSun;
     public bool hasTheCode;
 
     public Dictionary<string, bool> taken = new Dictionary<string, bool>();
@@ -31,6 +35,14 @@ public class GameManager : MonoBehaviour
         ArrowScripts.Destinations.UP,
         ArrowScripts.Destinations.RIGHT
     };
+
+    public void CheckForVictory()
+    {
+        if (hasGivenTheEssencesToSun)
+            SceneManager.LoadScene(11);
+        else if (hasGivenGreenEssence && hasGivenBlueEssence && hasGivenPinkEssence && hasGivenRedEssenece)
+            SceneManager.LoadScene(11);
+    }
 
     private void Awake()
     {

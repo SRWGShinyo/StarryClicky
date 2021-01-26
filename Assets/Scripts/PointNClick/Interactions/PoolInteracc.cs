@@ -51,6 +51,8 @@ public class PoolInteracc : IInteractable
                 });
 
             GameManager.activeGC.AddToInventory(fishy, GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Rod"));
+            PointNClickManager.pnClick.Rest();
+
         }
 
         else

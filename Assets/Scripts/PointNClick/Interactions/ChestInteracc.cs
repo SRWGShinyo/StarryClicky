@@ -6,6 +6,12 @@ public class ChestInteracc : IInteractable
 {
     public InventObject blueEssence;
 
+    private void Start()
+    {
+        if (GameManager.activeGC.hasGivenBlueEssence || GameManager.activeGC.inventory.Find(x => x.objectName == "Blue Essence"))
+            Destroy(gameObject);
+    }
+
     public override void Move()
     {
         FindObjectOfType<PointNClickManager>().GetIntoTalking(

@@ -85,6 +85,7 @@ public class BlueInteract : IInteractable
             GameManager.activeGC.hasGivenBlueEssence = true;
             GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Blue Essence"));
             PointNClickManager.pnClick.UpdateInventory();
+            PointNClickManager.pnClick.Rest();
             gameObject.SetActive(false);
             return;
         }

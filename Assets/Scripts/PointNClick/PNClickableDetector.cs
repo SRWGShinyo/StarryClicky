@@ -8,7 +8,7 @@ public class PNClickableDetector : MonoBehaviour
     public TextMeshProUGUI locationText;
 
     IInteractable hoverInteract;
-    string savedLocation = "";
+    public string savedLocation = "";
 
     void Update()
     {

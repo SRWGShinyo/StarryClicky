@@ -92,6 +92,7 @@ public class GreenyInteract : IInteractable
             GameManager.activeGC.hasGivenGreenEssence = true;
             GameManager.activeGC.inventory.RemoveAt(GameManager.activeGC.inventory.FindIndex(x => x.objectName == "Green Essence"));
             PointNClickManager.pnClick.UpdateInventory();
+            PointNClickManager.pnClick.Rest();
             gameObject.SetActive(false);
             return;
         }

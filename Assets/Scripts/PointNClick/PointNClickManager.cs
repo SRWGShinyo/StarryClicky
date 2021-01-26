@@ -11,6 +11,8 @@ public class PointNClickManager : MonoBehaviour
 {
     public static PointNClickManager pnClick;
 
+    public Sprite defaultBton;
+
     public TextMeshProUGUI tmproLocation;
     public TextMeshProUGUI speaker;
     public TextMeshProUGUI discussionField;
@@ -52,22 +54,47 @@ public class PointNClickManager : MonoBehaviour
     }
 
     public CLICKERSTATE state = CLICKERSTATE.IDLE;
-    private CLICKERSTATE savedState = CLICKERSTATE.IDLE;
+    public CLICKERSTATE savedState = CLICKERSTATE.IDLE;
 
     string toPlay = "";
 
     public void UpdateInventory()
     {
+        for (int i = 0; i < inventoryTons.Count; i++)
+        {
+            inventoryTons[i].GetComponent<Image>().sprite = defaultBton;
+        }
+
         for (int i = 0; i < GameManager.activeGC.inventory.Count; i++)
         {
             inventoryTons[i].GetComponent<Image>().sprite = GameManager.activeGC.inventory[i].image;
         }
     }
 
+    public void UpdateTMLocation(string update, bool clean = false)
+    {
+        if (clean)
+            tmproLocation.text = update;
+        else
+            tmproLocation.text += update;
+    }
+
+    public void Rest()
+    {
+        gameObject.GetComponent<PNClickableDetector>().savedLocation = FindObjectOfType<SceneHandlerClass>().sceneLocationName;
+        tmproLocation.text = FindObjectOfType<SceneHandlerClass>().sceneLocationName;
+    }
+
     private void Start()
     {
         tmproLocation.text = FindObjectOfType<SceneHandlerClass>().sceneLocationName;
     }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        tmproLocation.text = FindObjectOfType<SceneHandlerClass>().sceneLocationName;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(1) && (state != CLICKERSTATE.TALKING))
@@ -152,6 +179,7 @@ public class PointNClickManager : MonoBehaviour
         state = savedState;
         discussionPanel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.5f);
         pnClickPanel.transform.DOScale(new Vector3(1, 1, 1), 0.5f);
+        GameManager.activeGC.CheckForVictory();
     }
 
     public void HandleClickWhenTalking()
