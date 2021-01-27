@@ -21,7 +21,7 @@ public class LastScene_Handler : SceneHandlerClass
         FindObjectOfType<PointNClickManager>().GetIntoTalking(
             new List<string>()
             {
-                "Narrator : And so, Starry chose to give up the essences.",
+                "Narrator : And so, Starry chose to give the essences to the sun.",
                 "Narrator : The power of the sun gave it more and more light.",
                 "Starry : I'm shining ! A lot ! That's awesome !",
                 "Starry : But...I feel rather alone...and I can't light all the galaxy...",

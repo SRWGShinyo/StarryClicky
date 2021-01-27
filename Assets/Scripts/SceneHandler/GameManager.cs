@@ -40,10 +40,20 @@ public class GameManager : MonoBehaviour
 
     public void CheckForVictory()
     {
-        if (hasGivenTheEssencesToSun)
+        if (hasGivenTheEssencesToSun && !hasSeenTheEnd)
+        {
+            Destroy(PointNClickManager.pnClick.gameObject);
+            PointNClickManager.pnClick = null;
             SceneManager.LoadScene(11);
-        else if (hasGivenGreenEssence && hasGivenBlueEssence && hasGivenPinkEssence && hasGivenRedEssenece)
+        }
+        else if (hasGivenGreenEssence && hasGivenBlueEssence && hasGivenPinkEssence && hasGivenRedEssenece && !hasSeenTheEnd)
+        {
+            Destroy(PointNClickManager.pnClick.gameObject);
+            PointNClickManager.pnClick = null;
             SceneManager.LoadScene(11);
+        }
+        else if (hasSeenTheEnd)
+            SceneManager.LoadScene(12);
     }
 
     private void Awake()

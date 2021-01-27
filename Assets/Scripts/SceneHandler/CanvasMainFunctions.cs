@@ -28,14 +28,16 @@ public class CanvasMainFunctions : MonoBehaviour
 
     public void OpenCredit()
     {
-        mainpanel.SetActive(false);
         creditPanel.SetActive(true);
+        mainpanel.SetActive(false);
     }
 
     public void OpenInstruction()
     {
-        mainpanel.SetActive(false);
         InstructionsPanel.SetActive(true);
+        Debug.Log("yay");
+        mainpanel.SetActive(false);
+
     }
 
     public void Play()
